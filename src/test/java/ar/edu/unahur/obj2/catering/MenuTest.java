@@ -4,7 +4,6 @@ import ar.edu.unahur.obj2.catering.Exceptions.DescuentoInvalidoException;
 import ar.edu.unahur.obj2.catering.Propuesta.Menu;
 import ar.edu.unahur.obj2.catering.Propuesta.Servicio;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
 
 import java.util.List;
 
@@ -75,18 +74,14 @@ class MenuTest {
     void dadoUnMenuConDescuentoNegativo_alCrearlo_lanzaDescuentoInvalidoException() {
         Double descuento = -1.0;
 
-        Executable crear = () -> new Menu("Inválido", descuento, List.of());
-
-        assertThrows(DescuentoInvalidoException.class, crear);
+        assertThrows(DescuentoInvalidoException.class, () -> new Menu("Inválido", descuento, List.of()));
     }
 
     @Test
     void dadoUnMenuConDescuentoMayorACien_alCrearlo_lanzaDescuentoInvalidoException() {
         Double descuento = 101.0;
 
-        Executable crear = () -> new Menu("Inválido", descuento, List.of());
-
-        assertThrows(DescuentoInvalidoException.class, crear);
+        assertThrows(DescuentoInvalidoException.class, () -> new Menu("Inválido", descuento, List.of()));
     }
 
     @Test

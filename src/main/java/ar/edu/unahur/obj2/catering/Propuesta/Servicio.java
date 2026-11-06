@@ -4,7 +4,7 @@ import ar.edu.unahur.obj2.catering.Exceptions.PrecioNegativoException;
 public class Servicio implements Propuesta {
 
     private final String nombre;
-    private final Double precio;
+    private Double precio;
 
     public Servicio(String nombre, Double precio) {
         this.nombre = nombre;
@@ -36,5 +36,9 @@ public class Servicio implements Propuesta {
     @Override
     public Boolean incluye(String nombre) {
         return this.nombre.equals(nombre);
+    }
+
+    public void actualizarPrecio(Double precio) {
+        this.precio = validarPrecio(precio);
     }
 }

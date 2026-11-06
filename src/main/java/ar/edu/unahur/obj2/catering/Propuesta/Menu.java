@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ar.edu.unahur.obj2.catering.Exceptions.DescuentoInvalidoException;
+import ar.edu.unahur.obj2.catering.Exceptions.PropuestaNoIncluidaException;
 
 public class Menu implements Propuesta {
 
@@ -41,5 +42,16 @@ public class Menu implements Propuesta {
     @Override
     public Boolean incluye(String nombre) {
         return propuestas.stream().anyMatch(propuesta -> propuesta.incluye(nombre));
+    }
+
+    public void agregarPropuesta(Propuesta propuesta) {
+        propuestas.add(propuesta);
+    }
+
+    public void quitarPropuesta(Propuesta propuesta) {
+        if (!propuestas.contains(propuesta)) {
+            throw new PropuestaNoIncluidaException();
+        }
+        propuestas.remove(propuesta);
     }
 }

@@ -57,9 +57,7 @@ class ServicioTest {
     void dadoUnServicioConPrecioNegativo_alCrearlo_lanzaPrecioNegativoException() {
         Double precio = -1.0;
 
-        org.junit.jupiter.api.function.Executable crear = () -> new Servicio("Mesa dulce", precio);
-
-        assertThrows(PrecioNegativoException.class, crear);
+        assertThrows(PrecioNegativoException.class, () -> new Servicio("Mesa dulce", precio));
     }
 
     @Test
